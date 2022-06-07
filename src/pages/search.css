@@ -1,0 +1,22 @@
+.searchPage{
+  margin-top: 120px;
+}
+
+.searchPage__resultInfo {
+  text-align: left;
+}
+
+.searchPage__resultInfo p {
+  font-size: 12px;
+  color: gray;
+}
+
+.searchPage__resultInfo h4 {
+  font-size: 24px;
+}
+
+@media(min-width: 500px){
+  .searchPage{
+    margin-top: 100px;
+  }
+}
