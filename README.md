@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Book app
+
+![Book app](book-app.png)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
