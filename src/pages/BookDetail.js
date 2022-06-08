@@ -2,6 +2,7 @@ import './bookDetail.css'
 import {useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Allbooks } from '../data'
+import MeiliSearch from 'meilisearch'
 
 function BookDetail() {
 
@@ -9,11 +10,15 @@ function BookDetail() {
   const params = useParams()
 
   useEffect(() => {
-    const bookData = Allbooks.filter((book) => (
-      book.id === params.id
-    ))
-    setBook(bookData[0])
-    
+    const fetchData = async () => {
+      const client = new MeiliSearch({
+        host: 'http://127.0.0.1:7700',
+      })
+      const index = await client.getIndex('book')
+      const bookData = await index.getDocument(params.id)
+      setBook(bookData)
+    }
+    fetchData()
   }, [])
 
   return (

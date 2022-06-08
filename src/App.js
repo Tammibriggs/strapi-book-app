@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Home />}/>
         <Route path='/detail/:id' element={<BookDetail />}/>
-        <Route path='/search' element={<Search />}/>
+        <Route path='/search/:query' element={<Search />}/>
       </Routes>
     </div>
   );
