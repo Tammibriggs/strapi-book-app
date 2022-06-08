@@ -2,13 +2,18 @@ import './searchBar.css'
 import { useState } from 'react'
 import {SearchRounded } from '@mui/icons-material';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function SearchBar() {
 
   const [searchValue, setSearchValue] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(searchValue !== ''){
+      navigate(`/search/${searchValue}`)
+    }
   } 
 
   return (

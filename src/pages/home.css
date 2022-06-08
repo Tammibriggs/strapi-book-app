@@ -62,6 +62,14 @@
   grid-gap: 10px;
 }
 
+.loader {
+  margin-bottom: -20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media(min-width: 500px){
 
   .hero{
