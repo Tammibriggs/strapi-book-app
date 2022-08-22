@@ -19,7 +19,7 @@ function BookDetail() {
       setBook(bookData)
     }
     fetchData()
-  }, [])
+  }, [params])
 
   return (
     <div className='bookDetail wrapper'>

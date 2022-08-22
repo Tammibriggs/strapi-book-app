@@ -1,31 +1,33 @@
-import { useParams } from 'react-router-dom'
 import './search.css'
 import MeiliSearch from 'meilisearch'
 import {useEffect, useState} from 'react'
-import Book from '../components/Book'
+import Book from '../components/Book' // This import was not added in the article.
 
-function Search() {
+function Search({searchValue}) {
 
-  const params = useParams()
   const [books, setBooks] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const client = new MeiliSearch({
-        host: 'http://127.0.0.1:7700',
-      })
-      const index = await client.getIndex('book')
-      const booksData = await index.search(params.query)
-      console.log('This is the book data',booksData.hits)
-      setBooks(booksData.hits)
-    }
-    fetchData()
-  }, [params.query])
+    
+    useEffect(() => {
+      console.log('akdfmal', searchValue)
+      const fetchData = async () => {
+        const client = new MeiliSearch({
+          host: 'http://127.0.0.1:7700',
+        })
+        const index = await client.getIndex('book')
+        const booksData = await index.search(searchValue)
+        setBooks(booksData.hits)
+      }
+      fetchData()
+    }, [searchValue])
 
   return (
     <div className='searchPage wrapper'>
+      <div className='searchPage__resultInfo'>
+        <p>SEARCH RESULTS FOR</p>
+        <h4>{searchValue}</h4>
+      </div>
       <div className='books'>
-        {books?.map((book) => (
+        {searchValue && books?.map((book) => (
           <Book
             key={book.id}
             title={book.title}
